@@ -6,20 +6,9 @@ var bgtext = document.getElementsByClassName('mid')[0];
 function init(callback){
     axios.get('https://run.mocky.io/v3/08c763ab-5bb2-46b7-a504-b9f28a8ba050')
     .then(function (res) {
-        SetImgSrc(res.data.img);
-
         res_data = res.data.img;
-        bgimg.style.backgroundImage = "url(" + "'" + res.data.img[0] + "'" + ")";
-        bgtext.innerHTML = '1/' + res_data.length;
-
-        console.log(res.data.img);
-        // handle success
-        // LoadImage(res.data.img, function(e){
-        //     console.log('載入完成 ' + e);
-        //     console.log(res.data.img);
-        //     // SetImageSrc(res.data.img);
-        //     // document.getElementsByClassName('load')[0].style.display = 'none';
-        // });
+        SetImgSrc(res.data.img);
+        ImgChange();
       })
       .catch(function (error) {
         // handle error
@@ -28,20 +17,6 @@ function init(callback){
       .then(function () {
         // always executed'
       });
-}
-function LoadIMG(arr, onComplete){
-    var x = 0;
-    for(var i = 0; i < arr.length; i++){
-        var img = new Image();
-        img.src = arr[i]
-        img.onload = function(){
-            x++
-            if(x == arr.length){
-                var testReturn = '測試用回傳文字';
-                onComplete(testReturn);
-            }
-        }
-    }
 }
 function SetImgSrc(arr){
     html = '';
@@ -76,12 +51,14 @@ function ClickBtn(way){
     else if(current < 0){
         current = res_data.length-1;
     }
-    bgimg.style.backgroundImage = "url(" + "'" + res_data[current] + "'" + ")";
-    bgtext.innerHTML = Number(current)+1 + "/" + res_data.length;
+    ImgChange();
 }
 function Clickhandle(){
-    bgimg.style.backgroundImage = "url(" + "'" + this.src + "'" + ")";
     current = this.id;
+    ImgChange();
+}
+function ImgChange(){
+    bgimg.style.backgroundImage = "url(" + "'" + res_data[current] + "'" + ")";
     bgtext.innerHTML = Number(current)+1 + "/" + res_data.length;
 }
 init();
