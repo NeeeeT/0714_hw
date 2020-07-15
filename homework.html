@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <title>homework</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html, body{
+            width: 100%;
+            height: 100%;
+            background-color: #191919;
+        }
+        img{
+            display: block;
+        }
+        div#app{
+            width: 20%;
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            background-color: floralwhite;
+            /* background-image: url('./images/1.jpg'); */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        div#img-list{
+            /* background-color: rgb(100, 237, 157); */
+            width: 100%;
+        }
+        div#img-list > div > .imgg{
+            cursor: pointer;
+            width: 12.5%;
+            float: left;
+        }
+        div#btn > a{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 70px;
+            text-decoration: none;
+            color: #fff;
+        }
+        /* div#btn > a > .left{
+            float: left;
+        } */
+        div#btn > .right{
+            float: right;
+        }
+        div#btn > a:hover{
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(185, 231, 132);
+        }
+        p.mid{
+            /* height: 200px; */
+            text-align: center;
+            font-size: 100px;
+            color: #fff;
+            /* background-color: #fff; */
+        }
+    </style>
+</head>
+<body>
+    <div id='app'>
+    </div>
+    <div id='btn'>
+        <a class='left' href="javascript:;">◀</a>
+        <a class='right' href="javascript:;">▶</a>
+    </div>
+    <div id="img-list"></div>
+    <p class="mid"></p>
+    <script src="./js/homework.js"></script>
+</body>
+</html>
