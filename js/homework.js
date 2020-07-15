@@ -21,10 +21,13 @@ function init(callback){
 function SetImgSrc(arr){
     html = '';
     for(var i = 0; i < arr.length; i++){
-        html += '<div>'
-        html += '<img class="imgg" src="' + arr[i] + '" alt="error"/>';
-        html += '</div>'
-    }
+        // html += '<div>'
+        // html += '<img class="imgg" src="' + arr[i] + '" alt="error"/>';
+        // html += '</div>'
+        html += `
+            <div><img class='imgg' src=${arr[i]} alt='ERROR'/></div>
+        `
+    };
     document.getElementById('img-list').innerHTML = html;
     for(var i = 0; i < arr.length; i++){
         var temp = document.getElementsByClassName('imgg')[i]
@@ -58,7 +61,9 @@ function Clickhandle(){
     ImgChange();
 }
 function ImgChange(){
-    bgimg.style.backgroundImage = "url(" + "'" + res_data[current] + "'" + ")";
-    bgtext.innerHTML = Number(current)+1 + "/" + res_data.length;
+    // bgimg.style.backgroundImage = "url(" + "'" + res_data[current] + "'" + ")";
+    // bgtext.innerHTML = Number(current)+1 + "/" + res_data.length;
+    bgimg.style.backgroundImage = `url('${res_data[current]}')`;
+    bgtext.innerHTML = `${Number(current)+1}/${res_data.length}`;
 }
 init();
