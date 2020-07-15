@@ -3,7 +3,7 @@ var res_data = '';
 var bgimg = document.getElementById('app');
 var bgtext = document.getElementsByClassName('mid')[0];
 
-function init(){
+function init(callback){
     axios.get('https://run.mocky.io/v3/08c763ab-5bb2-46b7-a504-b9f28a8ba050')
     .then(function (res) {
         SetImgSrc(res.data.img);
@@ -70,11 +70,11 @@ function ClickBtn(way){
     else{
         current--;
     }
-    if(current > 7){
+    if(current > res_data.length-1){
         current = 0;
     }
     else if(current < 0){
-        current = 7;
+        current = res_data.length-1;
     }
     bgimg.style.backgroundImage = "url(" + "'" + res_data[current] + "'" + ")";
     bgtext.innerHTML = Number(current)+1 + "/" + res_data.length;
